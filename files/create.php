@@ -10,14 +10,16 @@
         </div>
         <div class="card-body">
             <?php
-            if(isset($_POST['save'])){
-                $title = $_POST['title'];
+            if(isset($_POST['save'])){  // Handle form submission and file upload
+                $title = $_POST['title']; // Form Data Handling
                 $description = $_POST['description'];
 
-                if (isset($_FILES['dataFile'])) {
-                    $filename = $_FILES['dataFile']['name'];
+                if (isset($_FILES['dataFile'])) { // // Process the uploaded file
+                    $filename = $_FILES['dataFile']['name'];  // File Details Extraction
                     $filesize = $_FILES['dataFile']['size'];
               
+
+                    // Modification of File Name
                     $explode = explode('.', $filename);
                     if (count($explode) === 2) {
                         $firstname = strtolower($explode[0]);
@@ -25,8 +27,10 @@
                         $rep = str_replace(' ', '', $firstname);
                         $finalfilename = $rep . time() . '.' . $ext;
 
-                        if ($filesize <= 2 * 1024 * 1024) {
+                        if ($filesize <= 2 * 1024 * 1024) {  // Check file size and extension
                             if ($ext == "jpg" || $ext == "png") {
+
+                                // File Move and Database Insertion
                                 if (move_uploaded_file($_FILES['dataFile']['tmp_name'], '../uploads/' . $finalfilename)) {
                                     $query = "INSERT INTO files (title, description,file_link, type) VALUES ('$title', '$description','$finalfilename', '$ext')";
                                     $result = mysqli_query($con, $query);

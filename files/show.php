@@ -24,15 +24,15 @@
             <form method="POST" action="" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Title</label>
-                    <input type="text" class="form-control" readonly  id="exampleInputEmail1" name="name" value="<?php echo  $data['title'] ?>" aria-describedby="emailHelp">
+                    <input type="text" class="form-control" readonly  id="title" name="title" value="<?php echo  $data['title'] ?>" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Description</label>
-                    <input type="Text" class="form-control" readonly id="exampleInputEmail1" name="name" value="<?php echo  $data['description'] ?>" aria-describedby="emailHelp">
+                    <input type="Text" class="form-control" readonly id="description" name="description" value="<?php echo  $data['description'] ?>" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                     <img src="<?php echo "../uploads/" . $data['file_link']; ?>" alt="" srcset="" width="150px" height="140px">
-                    <label for="exampleInputPassword1" class="form-label">Image</label>
+                    <label for="title" class="form-label">Image</label>
                 </div>
             </form>
         </div>

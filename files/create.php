@@ -5,8 +5,8 @@
 <div class="container mt-5">
     <div class="card mx-auto" style="max-width: 400px;">
         <div class="card-header bg-white">
-            <h5 class="card-title text-center mb-0">Add User</h5>
-            <a class="btn btn-primary btn-sm" href="index.php" role="button">Manage Users</a>
+            <h5 class="card-title text-center mb-0">Add Files</h5>
+            <a class="btn btn-primary btn-sm" href="index.php" role="button">Manage Files</a>
         </div>
         <div class="card-body">
             <?php

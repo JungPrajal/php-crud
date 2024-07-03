@@ -6,7 +6,7 @@
 <div class="container mt-5">
     <div class="card mx-auto" style="max-width: 400px;">
         <div class="card-header bg-white">
-            <h5 class="card-title text-center mb-0">Add User</h5>
+            <h5 class="card-title text-center mb-0">Show User</h5>
             <a class="btn btn-primary btn-sm " href="index.php" role="button"> Manage Users</a>
         </div>
         <div class="card-body">
@@ -14,7 +14,7 @@
 
             if(isset($_GET['id'])){
                 $id = $_GET['id'];
-                $query = "SELECT * FROM users WHERE id = '$id'";
+                $query = "SELECT * FROM files WHERE id = '$id'";
                 $select_result = mysqli_query($con, $query);
                 $data = mysqli_fetch_assoc($select_result);
             }
@@ -23,12 +23,16 @@
             ?>
             <form method="POST" action="" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Name</label>
-                    <input type="text" class="form-control" readonly  id="exampleInputEmail1" name="name" value="<?php echo  $data['name'] ?>" aria-describedby="emailHelp">
+                    <label for="exampleInputEmail1" class="form-label">Title</label>
+                    <input type="text" class="form-control" readonly  id="exampleInputEmail1" name="name" value="<?php echo  $data['title'] ?>" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" readonly id="exampleInputEmail1" name="email" value="<?php echo  $data['email'] ?>" aria-describedby="emailHelp">
+                    <label for="exampleInputEmail1" class="form-label">Description</label>
+                    <input type="Text" class="form-control" readonly id="exampleInputEmail1" name="name" value="<?php echo  $data['description'] ?>" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <img src="<?php echo "../uploads/" . $data['file_link']; ?>" alt="" srcset="" width="150px" height="140px">
+                    <label for="exampleInputPassword1" class="form-label">Image</label>
                 </div>
             </form>
         </div>

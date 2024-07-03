@@ -1,17 +1,22 @@
-
-<?php 
-require('../config/config.php');
-
-if(isset($_GET['id'])){
+<?php
+include("../config/config.php");
+ 
+ if(isset($_GET['id'])){
     $id = $_GET['id'];
 
-    $query = "DELETE FROM users WHERE id = '$id'";
-    $select_result = mysqli_query($con, $query);
+    $query1="SELECT * from files where id= $id";
+    $result= mysqli_query($con, $query1);
+    $row= $result->fetch_assoc();
+    $filelink= $row['file_link'];
+    $finallink= '../uploads/'.$filelink;
+    unlink($finallink);
 
-    echo "<meta http-equiv=\"refresh\" content=\"0;URL=index.php?msg=success\">";
-}
-
-
-
-
-?>
+    $query=" DELETE from files where id =$id";
+    $result= mysqli_query($con, $query);
+    if($result){
+        header('Refresh: 0; url=index.php');
+    }
+    else{
+        echo "your data is not delete";
+    }
+    }

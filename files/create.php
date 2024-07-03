@@ -33,7 +33,7 @@
                                 // File Move and Database Insertion
                                 if (move_uploaded_file($_FILES['dataFile']['tmp_name'], '../uploads/' . $finalfilename)) {
                                     $query = "INSERT INTO files (title, description,file_link, type) VALUES ('$title', '$description','$finalfilename', '$ext')";
-                                    $result = mysqli_query($con, $query);
+                                    $result= mysqli_query($con, $query);
                                     if ($result) {
                                         echo "File is submitted";
                                         header("Location: index.php");
